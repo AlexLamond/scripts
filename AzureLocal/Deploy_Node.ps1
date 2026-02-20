@@ -30,7 +30,7 @@ Rename-Computer -NewName "<NodeName>"
 # Cleanup the disks on the host
 
 $ServerList = "<NodeName>"
- 
+
 Invoke-Command ($ServerList) {
 Update-StorageProviderCache
 Get-StoragePool | ? IsPrimordial -eq $false | Set-StoragePool -IsReadOnly:$false -ErrorAction SilentlyContinue
