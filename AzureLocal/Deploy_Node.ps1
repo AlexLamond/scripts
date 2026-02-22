@@ -16,7 +16,7 @@ Set-Location D:\
 
 # Ensure the driver shows the correct manufacturer, and not Microsoft
 
-Get-NetAdapter | fl *driver*
+Get-NetAdapter | Format-List *driver*
 
 # Set you management addresses to static and setup DNS
 
