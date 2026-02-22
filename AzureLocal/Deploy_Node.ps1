@@ -11,7 +11,7 @@ New-HciAdObjectsPreCreation -AzureStackLCMUserCredential $credential -AsHciOUNam
 #Enable RDP inside the OS, and install network drivers
 
 Get-Volume
-cd D:\
+Set-Location D:\
 ./SetupBD.exe # / The file your driver installer is
 
 # Ensure the driver shows the correct manufacturer, and not Microsoft
