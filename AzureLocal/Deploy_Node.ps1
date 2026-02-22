@@ -37,7 +37,7 @@ Get-StoragePool | Where-Object IsPrimordial -eq $false | Set-StoragePool -IsRead
       Get-StoragePool | Where-Object IsPrimordial -eq $false | Get-VirtualDisk | Remove-VirtualDisk -Confirm:$false -ErrorAction SilentlyContinue
       Get-StoragePool | Where-Object IsPrimordial -eq $false | Remove-StoragePool -Confirm:$false -ErrorAction SilentlyContinue
       Get-PhysicalDisk | Reset-PhysicalDisk -ErrorAction SilentlyContinue
-      Get-Disk | Where-Object Number -ne $null | Where-Object IsBoot -ne $true | Where-Object IsSystem -ne $true | Where-Object PartitionStyle -ne RAW | Where-Object BusType -ne USB | % {
+      Get-Disk | Where-Object Number -ne $null | Where-Object IsBoot -ne $true | Where-Object IsSystem -ne $true | Where-Object PartitionStyle -ne RAW | Where-Object BusType -ne USB | ForEach-Object {
 $_ | Set-Disk -isoffline:$false
            $_ | Set-Disk -isreadonly:$false
 $_ | Clear-Disk -RemoveData -RemoveOEM -Confirm:$false
