@@ -6,7 +6,7 @@ Invoke-SolutionUpdatePrecheck -SystemHealth
 
 # Or
 
-Get-SolutionUpdateEnvironment | Format-Table HealthState, HealthCheckResult, HealthCheckDate 
+Get-SolutionUpdateEnvironment | Format-Table HealthState, HealthCheckResult, HealthCheckDate
 (Get-SolutionUpdateEnvironment).HealthCheckResult | Where-Object {$_.Status -ne "SUCCESS"}
 
 # Show the currently installed version, health state and update state
