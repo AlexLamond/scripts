@@ -1,5 +1,13 @@
+# Start a manual Health Check
+Invoke-SolutionUpdatePrecheck -SystemHealth
+
 # Check for Health Check Errors
 (Get-SolutionUpdateEnvironment).HealthCheckResult | Where-Object { ( $_.Status -ne "SUCCESS" ) -and ( $_.Severity -ne "INFORMATIONAL" ) } | Format-Table Title,Status,Severity,Description,Remediation
+
+# Or
+
+Get-SolutionUpdateEnvironment | Format-Table HealthState, HealthCheckResult, HealthCheckDate 
+(Get-SolutionUpdateEnvironment).HealthCheckResult | Where-Object {$_.Status -ne "SUCCESS"}
 
 # Show the currently installed version, health state and update state
 Get-SolutionUpdateEnvironment
@@ -74,3 +82,8 @@ Get-SolutionUpdate | Format-Table Version, State, UpdateStateProperties
 # Follow the current update stage using the actionPlanInstanceId
 
 Start-MonitoringActionplanInstanceToComplete -actionPlanInstanceID $currentupdaterunID
+
+# If the Get-SolutionUpdate Endpoint Stops Responding
+
+Get-ActionPlanInstances | Where-Object { $_.RuntimeParameters.updateId -ne $null } | Sort-Object LastModifiedDateTime | Format-Table InstanceId, StartDateTime, EndDateTime, Status, ActionPlanName, RuntimeParameters
+Get-ActionPlanInstance -actionPlanInstanceID $currentupdaterunID
