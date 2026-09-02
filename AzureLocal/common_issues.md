@@ -1,0 +1,1 @@
+- [Windows Defender WMI Blocks Update](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Update/Solution-Update-CAU-Run-fails-due-to-Windows-Defender-blocking-WMI-commands.md)
